@@ -1,0 +1,289 @@
+{{ $imageZenith := resources.Get "images/pages/blissified_04.png" }}
+{{ $image17 := resources.Get "images/pages/bliss17.png" }}
+{{ $image16 := resources.Get "images/pages/bliss16_colors.png" }}
+{{ $image15 := resources.Get "images/pages/bliss15.png" }}
+{{ $image14 := resources.Get "images/pages/bliss14.png" }}
+<div class='flex justify-center align-middle flx blissel '>
+    <div class='float-left glass p-4 overflow-hidden opt close blis text-white'
+         style="background-image: url('{{ $image14.RelPermalink }}');">
+        <p class="text-4xl hide">BlissOS</p>
+        <div style="all: unset">
+            <p class="text-4xl" style="visibility: visible; opacity: 1;">14</p>
+            <p style="visibility: visible; opacity: 1;">Android 11</p>
+        </div>
+        <div class="flex flex-row justify-around">
+            <div>
+                <h2>Kernel version</h2>
+                <p>6.1</p>
+            </div>
+            <div>
+                <p>Mesa version</p>
+                <p>23. 3.x</p>
+            </div>
+            <div>
+                <p>Build Status</p>
+                <p>Stable</p>
+            </div>
+        </div>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <section class="v">
+            <input id="f1" name="var" type="radio" value="FOSS" checked/>
+            <label for="f1">
+                FOSS
+            </label>
+            <input id="g1" name="var" type="radio" value="GApps"/>
+            <label for="g1">
+                GApps
+            </label>
+        </section>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+
+        <div class="flex flex-row justify-around">
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                elv" onclick="dlVariant('general',1)">
+                Generic
+            </button>
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                elv" onclick="dlVariant('surface',1)">
+                Surface
+            </button>
+        </div>
+    </div>
+    <div class='float-left relative glass p-4 overflow-hidden opt close blis text-white'
+         style="background-image: url('{{ $image15.RelPermalink }}');">
+        <h1 class="text-4xl hide">BlissOS</h1>
+        <div style="all: unset">
+            <p class="text-4xl" style="visibility: visible; opacity: 1;">15</p>
+            <p class="text-sm" style="visibility: visible; opacity: 1;">Android 12L</p>
+        </div>
+        <div class="flex flex-row justify-around">
+            <div>
+                <h2>Kernel version</h2>
+                <p>6.1</p>
+            </div>
+            <div>
+                <p>Mesa version</p>
+                <p>23.3.x</p>
+            </div>
+            <div>
+                <p>Build Status</p>
+                <p>Stable</p>
+            </div>
+        </div>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <section class="v">
+            <input id="f2" name="var2" type="radio" value="FOSS" checked/>
+            <label for="f2">
+                FOSS
+            </label>
+            <input id="g2" name="var2" type="radio" value="GApps"/>
+            <label for="g2">
+                GApps
+            </label>
+        </section>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+
+        <div class="flex flex-row justify-around">
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                twlv" onclick="dlVariant('general',2)">
+                Generic
+            </button>
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                twlv" onclick="dlVariant('surface',2)">
+                Surface
+            </button>
+        </div>
+    </div>
+    <div class='float-left relative glass p-4 overflow-hidden opt close blis text-black'
+    style="background-image: url('{{ $image16.RelPermalink }}');">
+        <h1 class="text-4xl hide">BlissOS</h1>
+        <div style="all: unset">
+            <p class="text-4xl" style="visibility: visible; opacity: 1;">16</p>
+            <p style="visibility: visible; opacity: 1;">Android 13</p>
+        </div>
+        <div class="flex flex-row justify-around">
+            <div>
+                <h2>Kernel version</h2>
+                <p>6.1</p>
+            </div>
+            <div>
+                <p>Mesa version</p>
+                <p>23.3.x</p>
+            </div>
+            <div>
+                <p>Build Status</p>
+                <p>Beta</p>
+            </div>
+        </div>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <section class="v">
+            <input id="f3" name="var3" type="radio" value="FOSS" checked="checked"/>
+            <label for="f3">
+                FOSS
+            </label>
+            <input id="g3" name="var3" type="radio" value="GApps"/>
+            <label for="g3">
+                GApps
+            </label>
+        </section>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+
+        <div class="flex flex-row justify-around">
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                thrtn" onclick="dlVariant('general',3)">
+                Generic
+            </button>
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                thrtn" onclick="dlVariant('surface',3)" >
+                Surface
+            </button>
+        </div>
+    </div>
+    <!-- <div class='float-left relative glass p-4 overflow-hidden opt open blis text-white'
+         style="background-image: url('{{ $image17.RelPermalink }}');">
+        <h1 class="text-4xl">BlissOS</h1>
+        <div style="all: unset">
+            <p class="text-4xl" style="visibility: visible; opacity: 1;">17</p>
+        </div>
+        <h2 class="text-xl">Android 14</h2>
+        <div class="flex flex-row justify-around">
+            <div>
+                <h2>Kernel version</h2>
+                <p>6.1</p>
+            </div>
+            <div>
+                <p>Mesa version</p>
+                <p>24.0.x</p>
+            </div>
+            <div>
+                <p>Build Status</p>
+                <p>Alpha</p>
+            </div>
+        </div>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <section class="v">
+            <input id="f4" name="var4" type="radio" value="FOSS" checked/>
+            <label for="f4">
+                FOSS
+            </label>
+            <input id="g4" name="var4" type="radio" value="GApps"/>
+            <label for="g4">
+                GApps
+            </label>
+        </section>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <div class="flex flex-row justify-around">
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                thrtn" onclick="dlVariant('general',4)">
+                Generic
+            </button>
+            <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+                thrtn" onclick="dlVariant('general',4)">
+                Surface
+            </button>
+        </div>
+    </div> -->
+    <div class='float-left glass p-4 overflow-hidden opt close blis text-white'
+         style="background-image: url('{{ $imageZenith.RelPermalink }}');">
+        <h1 class="text-4xl hide">BlissOS</h1>
+        <div style="all: unset">
+            <p class="text-2xl" style="visibility: visible; opacity: 1;">Zenith</p>
+            <p style="visibility: visible; opacity: 1;">Android 14</p>
+        </div>
+        <div class="flex flex-row justify-around">
+            <div>
+                <h2>Kernel version</h2>
+                <p>6.7</p>
+            </div>
+            <div>
+                <p>Mesa version</p>
+                <p>24.0.x</p>
+            </div>
+            <div>
+                <p>Build Status</p>
+                <p>Alpha</p>
+            </div>
+        </div>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <section class="v">
+            <input id="f5" name="var5" type="radio" value="FOSS" checked="checked"/>
+            <label for="f5">
+                FOSS
+            </label>
+            <input id="g5" name="var5" type="radio" value="GApps"/>
+            <label for="g5">
+                GApps
+            </label>
+        </section>
+        <p class="h-1 my-4 bg-white w-auto rounded"></p>
+        <div class="flex flex-row justify-around">
+            <button type="button"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg
+                text-base px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800
+                thrtn" onclick="dlVariant('general',5)">
+                Generic
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dlVariant(isoType, version) {
+        let url = "https://sourceforge.net/projects/blissos-x86/files/Official/";
+        let isFoss;
+
+        if(version ===  1){
+            url = url.concat("BlissOS14/")
+            isFoss = document.getElementById('f1')
+        } else if (version === 2){
+            url = url.concat("BlissOS15/")
+            isFoss = document.getElementById('f2')
+        }
+        else if (version === 3) {
+            url = url.concat("BlissOS16/")
+            isFoss = document.getElementById('f3')
+        }
+        else if(version === 4) {
+            url = url.concat("BlissOS17/")
+            isFoss = document.getElementById('f4')
+        } else {
+            url = url.concat("BlissOSZenith/")
+            isFoss = document.getElementById('f5')
+        }
+
+        if(isFoss.checked){
+            url = url.concat("FOSS/")
+        }
+        else {
+            if(version === 1) {
+                url = url.concat("OpenGApps/")
+            }
+            else url = url.concat("Gapps/")
+        }
+
+        if(isoType === 'general'){
+            url = url.concat("Generic/")
+        }
+        else if(isoType === 'surface'){
+            url = url.concat("Surface/")
+        }
+
+        window.open(url)
+    }
+</script>

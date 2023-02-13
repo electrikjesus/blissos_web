@@ -1,0 +1,39 @@
+<div class="splide !p-0 sm:!pt-8 lg:!pt-0" id="imgspl" aria-label="Bliss img">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide">
+                <div class="pt-8 sm:pt-0">
+                    {{ $hero := resources.GetMatch "images/desc/bliss_def.png" }}
+                    <img src="{{ $hero.RelPermalink }}"
+                         width="100%" height="" alt="BlissOS"
+                         class="w-full max-w-xl mx-auto border-gray-950 dark:border-gray-200 border-[20px] rounded-lg " />
+                </div>
+            </li>
+            <li class="splide__slide">
+                <div class="pt-8 sm:pt-0">
+                    {{ $hero := resources.GetMatch "images/desc/bliss_surf.png" }}
+                    <img src="{{ $hero.RelPermalink }}"
+                         width="100%" height="" alt="BlissOS Surface"
+                         class="w-full max-w-xl mx-auto border-gray-950 dark:border-gray-200 border-t-[20px] border-b-[20px] border-l-[12px] border-r-[12px] rounded-lg "/>
+                </div>
+            </li>
+            <li class="splide__slide">
+                <div class="pt-8 sm:pt-0">
+                    {{ $hero := resources.GetMatch "images/desc/bliss_go.png" }}
+                    <img src="{{ $hero.RelPermalink }}"
+                         width="100%" height="" alt="BlissOS Go"
+                         class="w-full max-w-xl mx-auto border-gray-950 dark:border-gray-200 border-[32px] rounded-2xl "/>
+                </div>
+            </li>
+            <li class="splide__slide">
+                <div class="pt-8 sm:pt-0">
+                    {{ $hero := resources.GetMatch "images/desc/bliss_zenith.png" }}
+                    <img src="{{ $hero.RelPermalink }}"
+                         width="100%" height="" alt="BlissOS Zenith"
+                         class="w-full max-w-xl mx-auto border-gray-950 dark:border-gray-200 rounded-lg" style="border-width: 8px 8px 32px;"/>
+                    <p class="text-2xl text-center text-gray-800 mt-[-32px]">BLISS</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

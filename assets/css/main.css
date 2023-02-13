@@ -1,4 +1,4 @@
-/* assets */ 
+/* assets */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,9 +20,17 @@ Segoe UI Symbol,
 Android Emoji,
 EmojiSymbols;
 /* Custom CSS */
-
 .prose :where(h1):not(:where([class~="not-prose"] *)) {
     color: white !important;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* Custom CSS end */

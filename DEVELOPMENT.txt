@@ -1,0 +1,139 @@
+BlissOS Website - Development Guide
+===================================
+
+Development Workflow
+--------------------
+
+Starting Development
+--------------------
+1. Open terminal in project directory
+2. Run: npm start
+3. This starts both:
+   - Tailwind CSS watcher (rebuilds CSS on changes)
+   - Express server with nodemon (restarts on file changes)
+
+Available npm Scripts
+---------------------
+npm start           - Start development with hot reloading
+npm run dev         - Start Express server only with nodemon
+npm run watch:css   - Watch and rebuild CSS files only
+npm run build:css   - Build CSS for production (minified)
+npm run build       - Build CSS and start production server
+npm run production  - Start server in production mode
+
+File Structure
+--------------
+server.js           - Main Express application
+views/              - EJS template files
+  index.ejs         - Homepage template
+  licensing.ejs     - Licensing page template
+  partials/         - Reusable template components
+    nav.ejs         - Navigation component
+    footer.ejs      - Footer component
+assets/             - Static assets
+  css/              - Stylesheets
+    main.css        - Tailwind input file
+    style.css       - Generated output file (do not edit)
+  js/               - JavaScript files
+  images/           - Image assets
+package.json        - Dependencies and scripts
+tailwind.config.js  - Tailwind CSS configuration
+
+Making Changes
+--------------
+
+Adding New Pages:
+1. Create new EJS file in views/ directory
+2. Include full HTML structure (see existing files)
+3. Add route in server.js:
+   app.get('/newpage', (req, res) => {
+     res.render('newpage', { title: 'Page Title', description: 'Description' });
+   });
+
+Modifying Styles:
+1. Edit classes directly in EJS templates
+2. Tailwind will automatically rebuild CSS
+3. For custom CSS, edit assets/css/main.css
+
+Adding JavaScript:
+1. Add JS files to assets/js/
+2. Include in templates or partials as needed
+3. Server will serve from /assets/js/ path
+
+Updating Navigation:
+1. Edit views/partials/nav.ejs
+2. Changes apply to all pages automatically
+
+Development Tips
+----------------
+
+Hot Reloading:
+- CSS changes: Automatic rebuild, refresh browser
+- EJS template changes: Server restarts automatically
+- Server.js changes: Server restarts automatically
+
+Port Configuration:
+- Default port: 3010
+- Change with environment variable: PORT=8080 npm start
+
+Debugging:
+- Server logs appear in terminal
+- Check browser console for client-side errors
+- CSS compilation errors show in terminal
+
+Testing Changes:
+1. Make changes to files
+2. Wait for automatic rebuild/restart
+3. Refresh browser to see changes
+4. Check both light and dark modes
+5. Test responsive design on different screen sizes
+
+Code Style Guidelines
+---------------------
+- Use consistent indentation (2 spaces)
+- Follow existing EJS template structure
+- Use Tailwind utility classes when possible
+- Keep JavaScript in separate files when practical
+- Comment complex functionality
+
+Common Development Tasks
+------------------------
+
+Adding a New Route:
+1. Add route handler in server.js
+2. Create corresponding EJS template
+3. Test the new page
+
+Updating Styles:
+1. Modify Tailwind classes in templates
+2. CSS rebuilds automatically
+3. Refresh browser to see changes
+
+Adding Images:
+1. Place images in assets/images/
+2. Reference as: /assets/images/filename.jpg
+3. Optimize images for web use
+
+Modifying Navigation:
+1. Edit views/partials/nav.ejs
+2. Update links and menu items
+3. Test responsive menu functionality
+
+Production Deployment
+---------------------
+1. Run: npm run build:css
+2. Set NODE_ENV=production
+3. Run: npm run production
+4. Server runs optimized for production
+
+Environment Variables
+---------------------
+PORT            - Server port (default: 3010)
+NODE_ENV        - Environment mode (development/production)
+
+Troubleshooting Development Issues
+----------------------------------
+CSS not updating: Check Tailwind watcher is running
+Server not restarting: Verify nodemon is working
+Images not loading: Check file paths and case sensitivity
+JavaScript errors: Check browser console and file paths

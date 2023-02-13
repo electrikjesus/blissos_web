@@ -1,0 +1,215 @@
+BlissOS Website - Deployment Guide
+==================================
+
+Production Deployment
+---------------------
+
+Pre-Deployment Checklist
+-------------------------
+1. Test application locally with: npm start
+2. Verify all pages load correctly
+3. Test responsive design on multiple screen sizes
+4. Verify dark mode functionality
+5. Check all links and navigation
+6. Ensure all images and assets load properly
+7. Run production build: npm run build:css
+
+Environment Setup
+-----------------
+
+Server Requirements:
+- Node.js 16 or higher
+- npm package manager
+- Minimum 512MB RAM
+- 1GB disk space (including dependencies)
+- Network access for external resources (FontAwesome, etc.)
+
+Environment Variables:
+PORT=3010                    - Server port
+NODE_ENV=production         - Production mode
+PM2_HOME=/path/to/pm2       - PM2 configuration (if using PM2)
+
+Deployment Methods
+------------------
+
+Method 1: Direct Node.js
+------------------------
+1. Copy project files to server
+2. Install dependencies: npm install --production
+3. Build CSS: npm run build:css
+4. Start server: npm run production
+
+Method 2: PM2 Process Manager (Recommended)
+-------------------------------------------
+1. Install PM2 globally: npm install -g pm2
+2. Copy project files to server
+3. Install dependencies: npm install --production
+4. Build CSS: npm run build:css
+5. Start with PM2: pm2 start server.js --name "blissweb"
+6. Save PM2 configuration: pm2 save
+7. Setup auto-restart: pm2 startup
+
+PM2 Commands:
+pm2 start server.js --name "blissweb"    - Start application
+pm2 stop blissweb                        - Stop application
+pm2 restart blissweb                     - Restart application
+pm2 logs blissweb                        - View logs
+pm2 status                               - Check status
+pm2 delete blissweb                      - Remove from PM2
+
+Method 3: Docker Deployment
+---------------------------
+Create Dockerfile:
+
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY . .
+RUN npm run build:css
+EXPOSE 3010
+CMD ["npm", "run", "production"]
+
+Build and run:
+docker build -t blissweb .
+docker run -p 3010:3010 blissweb
+
+Reverse Proxy Setup
+-------------------
+
+Nginx Configuration:
+server {
+    listen 80;
+    server_name yourdomain.com;
+    
+    location / {
+        proxy_pass http://localhost:3010;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+    
+    location /assets/ {
+        proxy_pass http://localhost:3010/assets/;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+
+Apache Configuration:
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    ProxyPreserveHost On
+    ProxyRequests Off
+    ProxyPass / http://localhost:3010/
+    ProxyPassReverse / http://localhost:3010/
+</VirtualHost>
+
+SSL/HTTPS Setup
+---------------
+1. Obtain SSL certificate (Let's Encrypt recommended)
+2. Configure reverse proxy for HTTPS
+3. Redirect HTTP to HTTPS
+4. Update any hardcoded HTTP links
+
+Performance Optimization
+------------------------
+
+Server-Level:
+- Enable gzip compression in reverse proxy
+- Set appropriate cache headers for static assets
+- Use CDN for static assets if needed
+- Monitor server resources (CPU, RAM, disk)
+
+Application-Level:
+- Ensure NODE_ENV=production is set
+- Minified CSS is built with: npm run build:css
+- Static assets are served efficiently by Express
+
+Monitoring and Logging
+----------------------
+
+Log Files:
+- PM2 logs: pm2 logs blissweb
+- System logs: Check /var/log/ for system issues
+- Nginx/Apache logs: Check web server logs
+
+Health Checks:
+- Monitor HTTP response codes
+- Check server uptime
+- Monitor resource usage
+- Set up alerts for downtime
+
+Backup Strategy
+---------------
+1. Regular backups of application files
+2. Database backups (if applicable in future)
+3. Configuration file backups
+4. SSL certificate backups
+
+Update Procedure
+----------------
+1. Test updates in staging environment
+2. Create backup of current deployment
+3. Stop application: pm2 stop blissweb
+4. Update files
+5. Install new dependencies: npm install --production
+6. Rebuild CSS: npm run build:css
+7. Start application: pm2 start blissweb
+8. Verify deployment is working
+9. Monitor for issues
+
+Rollback Procedure
+------------------
+1. Stop current application
+2. Restore previous backup
+3. Restart application
+4. Verify rollback successful
+
+Security Considerations
+-----------------------
+- Keep Node.js and dependencies updated
+- Use HTTPS in production
+- Implement proper firewall rules
+- Regular security audits: npm audit
+- Monitor for vulnerabilities
+- Secure server access (SSH keys, etc.)
+
+Troubleshooting Deployment Issues
+----------------------------------
+
+Application Won't Start:
+- Check Node.js version compatibility
+- Verify all dependencies installed
+- Check port availability
+- Review error logs
+
+Performance Issues:
+- Monitor server resources
+- Check for memory leaks
+- Optimize static asset delivery
+- Review database queries (if applicable)
+
+SSL/HTTPS Issues:
+- Verify certificate validity
+- Check reverse proxy configuration
+- Ensure all resources use HTTPS
+
+Common Error Solutions:
+- Port in use: Change PORT environment variable
+- Permission denied: Check file permissions
+- Module not found: Run npm install
+- CSS not loading: Run npm run build:css
+
+Support and Maintenance
+-----------------------
+- Regular dependency updates
+- Security patch management
+- Performance monitoring
+- Log rotation setup
+- Automated backup verification

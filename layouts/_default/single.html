@@ -1,13 +1,17 @@
 {{define "main"}}
-<article>
-  <header class="mb-4 bg-indigo-600">
+{{ $image := resources.Get "images/pages/bliss16_colors.png" }}
+<article class="dark:bg-gray-900">
+  <header class="mb-4" style="background-image: url('{{ $image.RelPermalink }}'); background-position: center;">
     <span class="py-96">
-      <h1 class="py-16 text-5xl font-black text-center text-white capitalize">
+      <h1 class="py-16 text-5xl font-black text-center text-black capitalize">
         {{ .Title }}
       </h1>
+      <h2 class="pb-16 text-2xl font-black text-center text-black capitalize">
+        {{ .Description }}
+      </h2>
     </span>
   </header>
-  <div class="max-w-4xl mx-auto mt-8 mb-2">
+  <div class="max-w-4xl mx-auto mt-8 mb-2 ">
     <div class="px-6">
       {{ with .Params.featured_image }}
       {{ with resources.Get . }}
@@ -27,7 +31,7 @@
     </div>
   </div>
   <!-- " {{.Content}}" pulls from the markdown content of the corresponding _index.md -->
-  <div class="max-w-2xl px-6 pt-6 pb-16 mx-auto prose dark:prose-invert dark:text-white">
+  <div class="max-w-2xl px-6 pt-6 pb-16 mx-auto prose dark:prose-invert dark:text-white dark:bg-gray-900">
     {{.Content}}
   </div>
 </article>

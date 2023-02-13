@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+* {
+  font-family: 'Rubik', sans-serif; }
+
+#mainBG {
+  background-image: url("/images/pages/bliss16_colors.png "); }
+
+*.dark #mainBG {
+  background-image: url("/images/pages/bliss16_colors_dark.png "); }
+
+.crv1 {
+  clip-path: url(#mask1); }
+
+.crv2 {
+  clip-path: url(#mask2); }
+
+.crv3 {
+  clip-path: url(#mask3); }
+
+.crv4 {
+  clip-path: url(#mask4); }
+
+.crv5 {
+  clip-path: url(#mask5); }
+
+.crv6 {
+  clip-path: url(#mask6); }

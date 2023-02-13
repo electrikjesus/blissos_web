@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+* {
+  font-family: 'Rubik', sans-serif; }
+
+.bgLight {
+  background-image: url('{{ resources.Get "images/pages/bliss16_colors.png" }} '); }
+
+.bgDark {
+  background-image: url('{{ resources.Get "images/pages/bliss16_colors_dark.png" }} '); }

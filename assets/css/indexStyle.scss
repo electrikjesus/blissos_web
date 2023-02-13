@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+#mainBG {
+{{ with resources.Get "images/pages/bliss16_colors.png" }}
+  background-image: url('{{ .RelPermalink }} ');
+{{end}}
+}
+*.dark #mainBG {
+{{ with resources.Get "images/pages/bliss16_colors_dark.png" }}
+  background-image: url('{{ .RelPermalink }} ');
+{{end}}
+}
+
+@for $i from 1 through 6 {
+  .crv#{$i} {
+    clip-path: url(#mask#{$i});
+  }
+}

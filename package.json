@@ -1,24 +1,26 @@
 {
-  "name": "TailBliss",
+  "name": "blissweb",
   "version": "0.1.1",
-  "description": "Hugo + Alpine.js + TailwindCSS",
-  "main": "index.js",
+  "description": "Website for BlissOS",
+  "main": "server.js",
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.8",
-    "alpinejs": "^3.10.5",
-    "autoprefixer": "^10.4.12",
-    "concurrently": "^7.6.0",
-    "postcss": "^8.4.20",
-    "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.2.4",
-    "test": "^3.2.1"
+    "@tailwindcss/typography": "^0.5.15",
+    "alpinejs": "^3.14.7",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.16",
+    "nodemon": "^3.0.2",
+    "test": "^3.3.0"
   },
   "scripts": {
-    "start": "concurrently npm:watch:*",
-    "watch:tw": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --watch",
-    "watch:hugo": "hugo server",
-    "build": "hugo --minify",
-    "test": "hugo"
+    "start": "concurrently \"npm run watch:css\" \"npm run dev\"",
+    "dev": "nodemon server.js",
+    "watch:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --watch",
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --minify",
+    "build": "npm run build:css && node server.js",
+    "production": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -37,10 +39,15 @@
     "categories",
     "tags"
   ],
-  "author": "NusserStudios",
+  "author": "GiftShower_",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/nusserstudios/tailbliss/issues"
   },
-  "homepage": "https://github.com/nusserstudios/tailbliss"
+  "homepage": "https://github.com/nusserstudios/tailbliss",
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  }
 }

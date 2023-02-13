@@ -1,0 +1,26 @@
+<svg width="800" height="640" viewBox="0 0 800 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_48_489" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="640">
+<path d="M413.423 640C522.096 626.868 624.384 575.97 698.367 488.586C772.351 401.202 805.166 292.528 799.343 184.18C690.67 197.312 588.382 248.211 514.398 335.594C440.415 422.978 407.6 531.652 413.423 640Z" fill="black"/>
+<path d="M386.578 640C392.4 531.652 359.585 422.978 285.602 335.595C211.618 248.211 109.33 197.312 0.656957 184.18C-5.16535 292.528 27.6491 401.202 101.633 488.586C175.617 575.97 277.904 626.868 386.578 640Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M477.418 151.443C457.611 110.675 431.495 73.1627 400.239 40C368.893 73.2581 342.717 110.891 322.889 151.795C353.365 183.262 379.473 219.304 399.983 259.411C420.57 219.154 446.795 182.993 477.418 151.443Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M153.265 208.204C157.785 163.064 169.393 118.846 187.365 76.9835C274.57 120.928 346.577 191.485 389.002 282.491C385.185 291.144 381.62 299.968 378.318 308.959C366.973 339.853 359.276 371.242 355.019 402.693C340.192 374.655 322.161 347.823 300.866 322.671C259.052 273.284 208.633 235.072 153.265 208.204Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M646.702 208.221C642.183 163.074 630.574 118.851 612.6 76.9835C515.013 126.16 436.458 208.662 397.092 315.854C382.338 356.031 374.05 397.057 371.711 437.91C384.75 468.854 394.156 500.952 400 533.623C413.563 457.803 446.307 385.067 499.134 322.671C540.94 273.294 591.346 235.087 646.702 208.221Z" fill="black"/>
+</mask>
+<g mask="url(#mask0_48_489)">
+<ellipse cx="-135.038" cy="-175.66" rx="939.9" ry="576" transform="rotate(-22.104 -135.038 -175.66)" fill="#EB00FF"/>
+<ellipse cx="1115.36" cy="226.94" rx="939.9" ry="576" transform="rotate(-22.104 1115.36 226.94)" fill="#FF4D00"/>
+<ellipse cx="-161.438" cy="981.74" rx="939.9" ry="576" transform="rotate(-22.104 -161.438 981.74)" fill="#AD00FF"/>
+<ellipse cx="1115.36" cy="981.74" rx="939.9" ry="576" transform="rotate(-22.104 1115.36 981.74)" fill="#FF006B"/>
+<g filter="url(#filter0_b_48_489)">
+<rect x="-240" y="-320" width="1280" height="1280" fill="#F4F5F8" fill-opacity="0.8"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_48_489" x="-540" y="-620" width="1880" height="1880" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="150"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_48_489"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_48_489" result="shape"/>
+</filter>
+</defs>
+</svg>

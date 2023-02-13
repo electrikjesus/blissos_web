@@ -1,0 +1,99 @@
+BlissOS Website - Installation Guide
+====================================
+
+Prerequisites
+-------------
+Before installing the BlissOS website, ensure you have the following installed:
+
+1. Node.js (version 16 or higher)
+   - Download from: https://nodejs.org/
+   - Verify installation: node --version
+
+2. npm (comes with Node.js)
+   - Verify installation: npm --version
+
+3. Git (optional, for cloning)
+   - Download from: https://git-scm.com/
+
+Installation Steps
+------------------
+
+Step 1: Get the Project
+-----------------------
+Option A - Clone with Git:
+git clone <repository-url>
+cd blissweb
+
+Option B - Download ZIP:
+1. Download the project ZIP file
+2. Extract to desired location
+3. Open terminal/command prompt in project folder
+
+Step 2: Install Dependencies
+----------------------------
+Run the following command in the project directory:
+
+npm install
+
+This will install all required packages including:
+- Express.js
+- EJS
+- Tailwind CSS
+- Alpine.js
+- Nodemon
+- Concurrently
+- And other dependencies
+
+Step 3: Build CSS (First Time)
+------------------------------
+Generate the initial CSS file:
+
+npm run build:css
+
+Step 4: Start Development Server
+--------------------------------
+Start the development server with hot reloading:
+
+npm start
+
+The server will start on http://localhost:3010
+
+Available Pages
+---------------
+- Homepage: http://localhost:3010/
+- Licensing: http://localhost:3010/licensing
+
+Troubleshooting
+---------------
+
+Port Already in Use:
+If port 3010 is busy, set a different port:
+set PORT=8080 && npm start     (Windows)
+PORT=8080 npm start            (Mac/Linux)
+
+CSS Not Loading:
+Ensure Tailwind CSS is built:
+npm run build:css
+
+Dependencies Issues:
+Clear node_modules and reinstall:
+rmdir /s node_modules          (Windows)
+rm -rf node_modules            (Mac/Linux)
+npm install
+
+Server Won't Start:
+Check Node.js version is 16+:
+node --version
+
+Verify Installation
+-------------------
+After installation, you should see:
+1. Server running message in terminal
+2. CSS compilation successful
+3. Website accessible at http://localhost:3010
+4. Navigation and styling working properly
+5. Dark mode toggle functional
+
+Next Steps
+----------
+See DEVELOPMENT.txt for development workflow information.

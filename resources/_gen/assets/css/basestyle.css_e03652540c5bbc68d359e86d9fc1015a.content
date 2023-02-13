@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap'){{ $image := resources.Get "images/pages/bliss16_colors.png"; $imageDark := resources.Get "images/pages/bliss16_colors_dark.png" } }
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+.bgLight {
+    background-image: url('{{ $image.RelPermalink }} ');
+}
+
+.bgDark {
+    background-image: url('{{ $imageDark.RelPermalink }} ');
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}

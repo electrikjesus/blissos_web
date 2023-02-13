@@ -1,40 +1,39 @@
-var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
 
 // Change the icons inside the button based on previous settings
 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     themeToggleLightIcon.classList.remove('hidden');
+    localStorage.setItem('color-theme', 'dark');
 } else {
+    localStorage.setItem('color-theme', 'light');
     themeToggleDarkIcon.classList.remove('hidden');
 }
 
-var themeToggleBtn = document.getElementById('theme-toggle');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 themeToggleBtn.addEventListener('click', function() {
-
-    // toggle icons inside button
     themeToggleDarkIcon.classList.toggle('hidden');
     themeToggleLightIcon.classList.toggle('hidden');
 
-    // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        }
-
-    // if NOT set via local storage previously
-    } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    }
-    
+    const isDarkMode = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
 });
+
+
+const dlCard = document.getElementsByClassName("opt");
+    for (let element of dlCard) {
+        element.addEventListener('click', function () {
+            if(element.classList.contains('close')) {
+                element.classList.remove('close');
+                element.classList.add('open')
+                for(let elm of dlCard) {
+                    if (elm !== element && elm.classList.contains('open')) {
+                        elm.classList.remove('open');
+                        elm.classList.add('close');
+                    }
+                }
+            }
+        })
+    }

@@ -1,0 +1,55 @@
+<div class="{{ .context.color }} overflow-hidden">
+    <div class="overflow-hidden sm:pt-6 lg:relative">
+        <div class="max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 pb-8 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-12 lg:px-8">
+            <div class="md:mt-8 glass">
+                <div class="p-8 sm:max-w-xl">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                        {{ .context.baseTitle }}
+                    </h1>
+                    <div class="mt-6 space-y-6 text-gray-900 dark:text-white">
+                        {{ range .info }}
+                        <p class="text-2xl leading-7 font-bold">{{ .title }}</p>
+                        <p class="text-lg leading-7">
+                            {{ .desc }}
+                        </p>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <div class="sm:relative my-8 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                <div class="hidden sm:block">
+                    <svg class="absolute -mr-3 top-8 right-1/2 lg:left-0 lg:m-0" width="404" height="392" fill="none"
+                         viewBox="0 0 404 392" loading="lazy">
+                        <defs>
+                            <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20"
+                                     patternUnits="userSpaceOnUse">
+                                <rect x="0" y="0" width="4" height="4" class="text-gray-200 dark:text-gray-900/60"
+                                      fill="currentColor" />
+                            </pattern>
+                        </defs>
+                        <rect width="404" height="392" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
+                    </svg>
+                </div>
+                <div class="relative pl-4 -mr-40 sm:content-none  sm:mx-auto sm:max-w-fit sm:px-0 lg:h-full lg:max-w-none lg:pl-12 box-border">
+                    <img src="{{ .context.image }}" class="w-full rounded-lg lg:h-full lg:w-auto lg:max-w-none" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="mask3" clipPathUnits="objectBoundingBox">
+                <path
+                        transform="scale(0.0007, 0.0035)"
+                        d="M0,224L18.5,197.3C36.9,171,74,117,111,128C147.7,139,185,213,222,229.3C258.5,245,295,203,332,154.7C369.2,107,406,53,443,58.7C480,64,517,128,554,144C590.8,160,628,128,665,133.3C701.5,139,738,181,775,165.3C812.3,149,849,75,886,85.3C923.1,96,960,192,997,224C1033.8,256,1071,224,1108,224C1144.6,224,1182,256,1218,224C1255.4,192,1292,96,1329,69.3C1366.2,43,1403,85,1422,106.7L1440,128L1440,320L1421.5,320C1403.1,320,1366,320,1329,320C1292.3,320,1255,320,1218,320C1181.5,320,1145,320,1108,320C1070.8,320,1034,320,997,320C960,320,923,320,886,320C849.2,320,812,320,775,320C738.5,320,702,320,665,320C627.7,320,591,320,554,320C516.9,320,480,320,443,320C406.2,320,369,320,332,320C295.4,320,258,320,222,320C184.6,320,148,320,111,320C73.8,320,37,320,18,320L0,320Z">
+                </path>
+            </clipPath>
+        </defs>
+    </svg>
+    <div class="h-72 min-w-[1440px] bg-gradient-to-b from-transparent {{ .context.colorEnd }} -mt-16"
+         style="clip-path: url(#mask3)">
+    </div>
+</div>
