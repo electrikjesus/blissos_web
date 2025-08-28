@@ -61,29 +61,71 @@
 
         <!-- Downloads Section -->
         <div id="dlmenu" class="text-center relative bg-[#F5E4DF] dark:bg-[#3d0626] dark:text-white overflow-hidden">
-            <h2 class="text-4xl font-black tracking-tight mb-12 pt-16">BlissOS Downloads</h2>
+            <h2 class="text-4xl font-black tracking-tight mb-4 pt-16">BlissOS Downloads</h2>
             
-            <div class="max-w-4xl mx-auto px-4 pb-16">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">GApps Build</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Includes Google Play Store and services</p>
-                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">FOSS Build</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Open source alternatives only</p>
-                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Vanilla Build</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Minimal installation</p>
-                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
-                    </div>
+            <!-- Version Info -->
+            <% if (downloads && downloads.metadata && downloads.metadata.latestVersion) { %>
+                <div class="mb-8">
+                    <p class="text-lg text-gray-700 dark:text-gray-300">
+                        Latest Version: <span class="font-semibold"><%= downloads.metadata.latestVersion %></span>
+                        <% if (downloads.metadata.basedOn) { %>
+                            • Based on <%= downloads.metadata.basedOn %>
+                        <% } %>
+                    </p>
+                    <% if (downloads.metadata.lastUpdated) { %>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            Last Updated: <%= new Date(downloads.metadata.lastUpdated).toLocaleDateString('en-US', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            }) %>
+                        </p>
+                    <% } %>
                 </div>
+            <% } %>
+            
+            <div class="max-w-6xl mx-auto px-4 pb-16">
+                <% if (downloads && downloads.builds && downloads.builds.length > 0) { %>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <% downloads.builds.forEach(build => { %>
+                            <%- include('partials/download-card', { build: build }) %>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <!-- Fallback content if no downloads data -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">GApps Build</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Includes Google Play Store and services</p>
+                            <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">FOSS Build</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Open source alternatives only</p>
+                            <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Vanilla Build</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Minimal installation</p>
+                            <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                        </div>
+                    </div>
+                <% } %>
             </div>
             
-            <p class="pt-12 m-4">*<a href="http://docs.blissos.org" class="hover:text-indigo-600 dark:hover:text-indigo-500">Check our Documentation</a> to see which devices these builds are supported</p>
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <p class="text-gray-700 dark:text-gray-300 mb-2">
+                    *<a href="<%= downloads && downloads.metadata && downloads.metadata.documentationUrl ? downloads.metadata.documentationUrl : 'http://docs.blissos.org' %>" 
+                        class="hover:text-indigo-600 dark:hover:text-indigo-500 underline" target="_blank">
+                        Check our Documentation
+                    </a> to see which devices these builds are supported on
+                </p>
+                <% if (downloads && downloads.metadata && downloads.metadata.supportedArchitectures) { %>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Supported Architectures: <%= downloads.metadata.supportedArchitectures.join(', ') %>
+                    </p>
+                <% } %>
+            </div>
         </div>
     </main>
 
