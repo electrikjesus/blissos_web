@@ -27,6 +27,33 @@
 
     <link rel="stylesheet" href="/assets/css/style.css" media="all">
     <link rel="stylesheet" href="/assets/css/splide-sea-green.css" media="all">
+    <style>
+        /* Fallback CSS for grid layouts */
+        .grid-fallback {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .flex-fallback {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .flex-fallback > * {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        @media (max-width: 768px) {
+            .grid-fallback {
+                grid-template-columns: 1fr;
+            }
+            .flex-fallback > * {
+                min-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-white dark:bg-gray-900">
@@ -87,7 +114,7 @@
             <div class="max-w-7xl mx-auto px-4 pb-16">
                 <% if (downloads && downloads.builds && downloads.builds.length > 0) { %>
                     <!-- Downloads Cards with Flexbox Layout -->
-                    <div class="flex flex-wrap justify-center gap-8">
+                    <div class="flex flex-wrap justify-center gap-8 flex-fallback">
                         <% downloads.builds.forEach(build => { %>
                             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex-1 min-w-[300px] max-w-[400px] flex flex-col">
                                 <!-- Category Badge -->
