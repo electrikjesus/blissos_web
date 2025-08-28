@@ -1,0 +1,110 @@
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <!-- Build Category Badge -->
+    <% if (build.category === 'recommended') { %>
+        <div class="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-semibold px-2 py-1 rounded-full mb-3">
+            Recommended
+        </div>
+    <% } else if (build.category === 'privacy') { %>
+        <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-2 py-1 rounded-full mb-3">
+            Privacy Focused
+        </div>
+    <% } else if (build.category === 'minimal') { %>
+        <div class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold px-2 py-1 rounded-full mb-3">
+            Minimal
+        </div>
+    <% } %>
+
+    <!-- Build Title and Description -->
+    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"><%= build.title %></h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4"><%= build.description %></p>
+
+    <!-- Build Info -->
+    <div class="mb-4 space-y-2">
+        <div class="flex justify-between text-sm">
+            <span class="text-gray-500 dark:text-gray-400">Version:</span>
+            <span class="text-gray-900 dark:text-white font-medium"><%= build.version %></span>
+        </div>
+        <div class="flex justify-between text-sm">
+            <span class="text-gray-500 dark:text-gray-400">Size:</span>
+            <span class="text-gray-900 dark:text-white font-medium"><%= build.size %></span>
+        </div>
+        <div class="flex justify-between text-sm">
+            <span class="text-gray-500 dark:text-gray-400">Released:</span>
+            <span class="text-gray-900 dark:text-white font-medium">
+                <%= new Date(build.releaseDate).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                }) %>
+            </span>
+        </div>
+    </div>
+
+    <!-- Features List -->
+    <div class="mb-6">
+        <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Features:</h4>
+        <ul class="space-y-1">
+            <% build.features.forEach(feature => { %>
+                <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <%= feature %>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <!-- System Requirements (Collapsible) -->
+    <div class="mb-6">
+        <button class="flex items-center justify-between w-full text-left text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" 
+                onclick="toggleRequirements('<%= build.id %>')">
+            <span>System Requirements</span>
+            <svg id="req-icon-<%= build.id %>" class="w-4 h-4 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <div id="req-content-<%= build.id %>" class="hidden mt-2 text-xs text-gray-600 dark:text-gray-400 space-y-1">
+            <div><strong>RAM:</strong> <%= build.requirements.ram %></div>
+            <div><strong>Storage:</strong> <%= build.requirements.storage %></div>
+            <div><strong>Architecture:</strong> <%= build.requirements.architecture %></div>
+        </div>
+    </div>
+
+    <!-- Download Button -->
+    <div class="flex flex-col space-y-2">
+        <% if (build.supported) { %>
+            <a href="<%= build.downloadUrl %>" 
+               class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors text-center font-medium">
+                Download <%= build.title %>
+            </a>
+        <% } else { %>
+            <button disabled 
+                    class="bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed text-center font-medium">
+                Currently Unavailable
+            </button>
+        <% } %>
+        
+        <!-- Additional Links -->
+        <div class="flex justify-center space-x-4 text-xs">
+            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Changelog</a>
+            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">SHA256</a>
+            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">GPG Signature</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleRequirements(buildId) {
+    const content = document.getElementById('req-content-' + buildId);
+    const icon = document.getElementById('req-icon-' + buildId);
+    
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+    } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+    }
+}
+</script>
