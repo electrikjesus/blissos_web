@@ -1,0 +1,137 @@
+{
+  "communityEdition": {
+    "name": "BlissOS Community Edition",
+    "description": "Free and open-source Android OS for personal use and development",
+    "license": "GNU General Public License v3",
+    "price": "Free",
+    "features": [
+      "Full source code access",
+      "Community support via forums and chat",
+      "Regular updates and security patches",
+      "Multiple build variants (GApps, FOSS, Vanilla)",
+      "Wide hardware compatibility",
+      "Customization and theming options",
+      "Development tools and documentation",
+      "Community-driven feature development"
+    ],
+    "limitations": [
+      "Community support only",
+      "No commercial use without GPL compliance",
+      "No warranty or SLA guarantees",
+      "Limited enterprise features"
+    ],
+    "idealFor": [
+      "Individual users and enthusiasts",
+      "Developers and researchers",
+      "Educational institutions",
+      "Open-source projects",
+      "Personal and hobby use"
+    ]
+  },
+  "commercialEdition": {
+    "name": "Bass OS (Commercial Edition)",
+    "description": "Enterprise-focused Android OS with commercial support and additional features",
+    "license": "Commercial License",
+    "price": "Contact for pricing",
+    "website": "https://bassos.navotpala.tech",
+    "features": [
+      "All Community Edition features",
+      "Professional technical support",
+      "Service Level Agreements (SLA)",
+      "Enterprise security features",
+      "Custom branding and OEM support",
+      "Priority bug fixes and updates",
+      "Commercial use licensing",
+      "Dedicated account management",
+      "Custom feature development",
+      "Compliance and certification support"
+    ],
+    "advantages": [
+      "24/7 professional support",
+      "Guaranteed response times",
+      "Commercial use rights",
+      "Enterprise-grade security",
+      "Custom development services"
+    ],
+    "idealFor": [
+      "Businesses and enterprises",
+      "OEM manufacturers",
+      "Commercial product development",
+      "Mission-critical deployments",
+      "Organizations requiring support contracts"
+    ]
+  },
+  "comparison": {
+    "categories": [
+      {
+        "name": "Licensing & Usage",
+        "community": "GPL v3 - Free for personal/educational use",
+        "commercial": "Commercial license - Unrestricted commercial use"
+      },
+      {
+        "name": "Support",
+        "community": "Community forums, Discord, Telegram",
+        "commercial": "Professional support with SLA guarantees"
+      },
+      {
+        "name": "Updates",
+        "community": "Regular community releases",
+        "commercial": "Priority updates and security patches"
+      },
+      {
+        "name": "Customization",
+        "community": "Full source access for modifications",
+        "commercial": "Professional customization services"
+      },
+      {
+        "name": "Enterprise Features",
+        "community": "Basic features suitable for personal use",
+        "commercial": "Advanced enterprise security and management"
+      },
+      {
+        "name": "Warranty",
+        "community": "No warranty (as-is basis)",
+        "commercial": "Commercial warranty and liability coverage"
+      }
+    ]
+  },
+  "migrationPath": {
+    "title": "Migrating from Community to Commercial",
+    "description": "Seamless transition path for organizations that outgrow the community edition",
+    "steps": [
+      "Evaluate your commercial requirements",
+      "Contact Bass OS sales team for consultation",
+      "Receive custom pricing and feature assessment",
+      "Plan migration timeline with professional support",
+      "Deploy Bass OS with full commercial backing"
+    ],
+    "benefits": [
+      "Retain all existing configurations",
+      "Professional migration assistance",
+      "Minimal downtime during transition",
+      "Ongoing support and maintenance"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Can I use BlissOS Community Edition for commercial purposes?",
+      "answer": "Yes, but you must comply with GPL v3 requirements, including making your source code available. For proprietary commercial use, Bass OS Commercial Edition is recommended."
+    },
+    {
+      "question": "What's the difference between BlissOS and Bass OS?",
+      "answer": "BlissOS Community Edition is the free, open-source version with community support. Bass OS is the commercial version with professional support, enterprise features, and commercial licensing."
+    },
+    {
+      "question": "How do I get support for BlissOS Community Edition?",
+      "answer": "Community support is available through our Discord server, Telegram groups, GitHub issues, and community forums. Professional support is available with Bass OS Commercial Edition."
+    },
+    {
+      "question": "Can I contribute to BlissOS development?",
+      "answer": "Absolutely! BlissOS is open-source and welcomes community contributions. Check our GitHub repositories and contribution guidelines to get started."
+    },
+    {
+      "question": "When should I consider upgrading to Bass OS?",
+      "answer": "Consider Bass OS if you need commercial licensing, professional support, SLA guarantees, enterprise features, or are deploying in a business-critical environment."
+    }
+  ]
+}
