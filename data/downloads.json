@@ -1,0 +1,80 @@
+{
+  "builds": [
+    {
+      "id": "gapps",
+      "title": "GApps Build",
+      "description": "Includes Google Play Store and services",
+      "features": [
+        "Google Play Store",
+        "ARM Translation Layer",
+        "Widevine L3 Support",
+        "Full Google Services"
+      ],
+      "screenshot": "/assets/images/builds/gapps-screenshot.jpg",
+      "downloadUrl": "https://downloads.blissos.org/gapps/latest",
+      "version": "16.9.3",
+      "size": "2.1 GB",
+      "releaseDate": "2024-01-15",
+      "supported": true,
+      "category": "recommended",
+      "requirements": {
+        "ram": "4GB minimum, 8GB recommended",
+        "storage": "32GB free space",
+        "architecture": "x86_64"
+      }
+    },
+    {
+      "id": "foss",
+      "title": "FOSS Build",
+      "description": "Open source alternatives only",
+      "features": [
+        "F-Droid App Store",
+        "microG Services",
+        "Aurora Store",
+        "Privacy Focused"
+      ],
+      "screenshot": "/assets/images/builds/foss-screenshot.jpg",
+      "downloadUrl": "https://downloads.blissos.org/foss/latest",
+      "version": "16.9.3",
+      "size": "1.8 GB",
+      "releaseDate": "2024-01-15",
+      "supported": true,
+      "category": "privacy",
+      "requirements": {
+        "ram": "3GB minimum, 6GB recommended",
+        "storage": "24GB free space",
+        "architecture": "x86_64"
+      }
+    },
+    {
+      "id": "vanilla",
+      "title": "Vanilla Build",
+      "description": "Minimal installation with basic media support",
+      "features": [
+        "No Pre-installed Apps",
+        "Basic Media Codecs",
+        "Lightweight",
+        "Customizable Base"
+      ],
+      "screenshot": "/assets/images/builds/vanilla-screenshot.jpg",
+      "downloadUrl": "https://downloads.blissos.org/vanilla/latest",
+      "version": "16.9.3",
+      "size": "1.2 GB",
+      "releaseDate": "2024-01-15",
+      "supported": true,
+      "category": "minimal",
+      "requirements": {
+        "ram": "2GB minimum, 4GB recommended",
+        "storage": "16GB free space",
+        "architecture": "x86_64"
+      }
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "latestVersion": "16.9.3",
+    "basedOn": "Android 13",
+    "supportedArchitectures": ["x86_64", "x86"],
+    "documentationUrl": "https://docs.blissos.org"
+  }
+}
