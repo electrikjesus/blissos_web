@@ -84,13 +84,80 @@
                 </div>
             <% } %>
             
-            <div class="max-w-6xl mx-auto px-4 pb-16">
+            <div class="max-w-7xl mx-auto px-4 pb-16">
                 <% if (downloads && downloads.builds && downloads.builds.length > 0) { %>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <% downloads.builds.forEach(build => { %>
-                            <%- include('partials/download-card', { build: build }) %>
-                        <% }); %>
+                    <!-- Carousel Container -->
+                    <div class="relative">
+                        <!-- Carousel Track -->
+                        <div id="downloads-carousel" class="splide" aria-label="Downloads Carousel">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <% downloads.builds.forEach(build => { %>
+                                        <li class="splide__slide">
+                                            <div class="px-4">
+                                                <%- include('partials/download-card', { build: build }) %>
+                                            </div>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <div class="splide__arrows splide__arrows--ltr">
+                            <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="downloads-carousel-track">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="downloads-carousel-track">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Pagination Dots -->
+                        <ul class="splide__pagination splide__pagination--ltr"></ul>
                     </div>
+                    
+                    <!-- Carousel Initialization Script -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var splide = new Splide('#downloads-carousel', {
+                                type: 'loop',
+                                perPage: 3,
+                                perMove: 1,
+                                gap: '2rem',
+                                padding: '2rem',
+                                autoplay: true,
+                                interval: 5000,
+                                pauseOnHover: true,
+                                pauseOnFocus: true,
+                                breakpoints: {
+                                    1024: {
+                                        perPage: 2,
+                                        gap: '1.5rem',
+                                        padding: '1.5rem',
+                                    },
+                                    768: {
+                                        perPage: 1,
+                                        gap: '1rem',
+                                        padding: '1rem',
+                                    },
+                                },
+                                classes: {
+                                    arrows: 'splide__arrows downloads-arrows',
+                                    arrow : 'splide__arrow downloads-arrow',
+                                    prev  : 'splide__arrow--prev downloads-arrow-prev',
+                                    next  : 'splide__arrow--next downloads-arrow-next',
+                                    pagination: 'splide__pagination downloads-pagination',
+                                    page: 'splide__pagination__page downloads-page',
+                                },
+                            });
+                            splide.mount();
+                        });
+                    </script>
                 <% } else { %>
                     <!-- Fallback content if no downloads data -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
