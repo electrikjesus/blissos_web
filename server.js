@@ -24,6 +24,23 @@ function loadDownloadsData() {
   }
 }
 
+function loadLicenseData() {
+  try {
+    const licensePath = path.join(__dirname, "data", "license-comparison.json");
+    const licenseData = fs.readFileSync(licensePath, "utf8");
+    return JSON.parse(licenseData);
+  } catch (error) {
+    console.error("Error loading license data:", error);
+    return {
+      communityEdition: {},
+      commercialEdition: {},
+      comparison: { categories: [] },
+      migrationPath: {},
+      faq: [],
+    };
+  }
+}
+
 // Basic routes
 app.get("/", (req, res) => {
   const downloadsData = loadDownloadsData();
@@ -36,10 +53,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/licensing", (req, res) => {
+  const licenseData = loadLicenseData();
+
   res.render("licensing", {
-    title: "Licensing - BlissOS",
+    title: "Licensing - BlissOS Community Edition",
     description:
-      "Bliss OS brings the best of what Android has to offer to your projects.",
+      "Learn about BlissOS Community Edition licensing and compare with Bass OS Commercial Edition.",
+    license: licenseData,
   });
 });
 
