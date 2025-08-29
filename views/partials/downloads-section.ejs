@@ -1,0 +1,149 @@
+<!-- Downloads Section -->
+<section id="downloads" class="py-16 px-4 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                BlissOS Downloads
+            </h2>
+            
+            <!-- Version Info -->
+            <% if (downloads && downloads.metadata && downloads.metadata.latestVersion) { %>
+                <div class="mb-8">
+                    <p class="text-lg text-gray-700 dark:text-gray-300">
+                        Latest Version: <span class="font-semibold"><%= downloads.metadata.latestVersion %></span>
+                        <% if (downloads.metadata.basedOn) { %>
+                            • Based on <%= downloads.metadata.basedOn %>
+                        <% } %>
+                    </p>
+                    <% if (downloads.metadata.lastUpdated) { %>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            Last Updated: <%= new Date(downloads.metadata.lastUpdated).toLocaleDateString('en-US', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            }) %>
+                        </p>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+        
+        <div class="max-w-6xl mx-auto">
+            <% if (downloads && downloads.builds && downloads.builds.length > 0) { %>
+                <!-- Downloads Cards Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <% downloads.builds.forEach(build => { %>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                            <!-- Category Badge -->
+                            <div class="p-4 pb-0">
+                                <% if (build.category === 'recommended') { %>
+                                    <span class="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-semibold px-3 py-1 rounded-full">
+                                        Recommended
+                                    </span>
+                                <% } else if (build.category === 'privacy') { %>
+                                    <span class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-3 py-1 rounded-full">
+                                        Privacy Focused
+                                    </span>
+                                <% } else if (build.category === 'minimal') { %>
+                                    <span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold px-3 py-1 rounded-full">
+                                        Minimal
+                                    </span>
+                                <% } %>
+                            </div>
+                            
+                            <!-- Card Content -->
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white"><%= build.title %></h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm flex-grow"><%= build.description %></p>
+                                
+                                <!-- Build Info -->
+                                <div class="space-y-2 mb-4">
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-500 dark:text-gray-400">Version:</span>
+                                        <span class="text-gray-900 dark:text-white font-medium"><%= build.version %></span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-500 dark:text-gray-400">Size:</span>
+                                        <span class="text-gray-900 dark:text-white font-medium"><%= build.size %></span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Key Features -->
+                                <div class="mb-6">
+                                    <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h4>
+                                    <ul class="space-y-1">
+                                        <% build.features.slice(0, 2).forEach(feature => { %>
+                                            <li class="flex items-start text-sm text-gray-600 dark:text-gray-400">
+                                                <span class="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                                <%= feature %>
+                                            </li>
+                                        <% }); %>
+                                        <% if (build.features.length > 2) { %>
+                                            <li class="text-xs text-gray-500 dark:text-gray-400 italic pl-3">
+                                                + <%= build.features.length - 2 %> more features
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Download Button - Pushed to bottom -->
+                                <div class="space-y-3 mt-auto">
+                                    <% if (build.supported) { %>
+                                        <a href="<%= build.downloadUrl %>" 
+                                           class="block w-full bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition-colors text-center font-medium">
+                                            Download <%= build.title %>
+                                        </a>
+                                    <% } else { %>
+                                        <button disabled 
+                                                class="block w-full bg-gray-400 text-white px-4 py-3 rounded-lg cursor-not-allowed text-center font-medium">
+                                            Currently Unavailable
+                                        </button>
+                                    <% } %>
+                                    
+                                    <button onclick="showDownloadDetails('<%= build.id %>')" 
+                                            class="block w-full text-indigo-600 dark:text-indigo-400 hover:underline text-sm py-2">
+                                        View Full Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <!-- Fallback content if no downloads data -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">GApps Build</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Includes Google Play Store and services</p>
+                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">FOSS Build</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Open source alternatives only</p>
+                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Vanilla Build</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Minimal installation</p>
+                        <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Download</a>
+                    </div>
+                </div>
+            <% } %>
+            
+            <!-- Documentation Link -->
+            <div class="max-w-4xl mx-auto px-4 text-center mt-12">
+                <p class="text-gray-700 dark:text-gray-300 mb-2">
+                    *<a href="<%= downloads && downloads.metadata && downloads.metadata.documentationUrl ? downloads.metadata.documentationUrl : 'http://docs.blissos.org' %>%" 
+                        class="hover:text-indigo-600 dark:hover:text-indigo-500 underline" target="_blank">
+                        Check our Documentation
+                    </a> to see which devices these builds are supported on
+                </p>
+                <% if (downloads && downloads.metadata && downloads.metadata.supportedArchitectures) { %>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Supported Architectures: <%= downloads.metadata.supportedArchitectures.join(', ') %>
+                    </p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
