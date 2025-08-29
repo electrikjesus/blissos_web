@@ -30,240 +30,152 @@
     <%- include('partials/nav') %>
     
     <main class="min-h-screen bg-white dark:bg-gray-900">
-        <%- include('partials/licensing-hero') %>
-        <%- include('partials/licensing-options') %>
-        <%- include('partials/licensing-comparison') %>
-        <%- include('partials/licensing-faq') %>
-        <%- include('partials/licensing-contact') %>
-    </main>
-
-    <%- include('partials/footer') %>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
-    <title><%= title %></title>
-    <meta name="description" content="<%= description %>">
-    
-    <script src="https://kit.fontawesome.com/bc56c2b7b7.js" crossorigin="anonymous"></script>
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
-
-    <link rel="stylesheet" href="/assets/css/style.css" media="all">
-    <link rel="stylesheet" href="/assets/css/splide-sea-green.css" media="all">
-    <style>
-        /* Fallback CSS for grid layouts */
-        .grid-fallback {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        @media (max-width: 768px) {
-            .grid-fallback {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-
-<body class="bg-white dark:bg-gray-900">
-    <%- include('partials/nav') %>
-    
-    <main class="bg-white dark:bg-gray-900 min-h-screen">
         <!-- Hero Section -->
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 py-16">
-            <div class="max-w-4xl mx-auto px-4 text-center">
+        <section class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
+            <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                    <%= license.communityEdition.name %>
+                    BlissOS Licensing
                 </h1>
                 <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                    <%= license.communityEdition.description %>
+                    Choose the right license for your needs - from personal use to commercial deployment
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg">
-                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                            <%= license.communityEdition.price %>
+            </div>
+        </section>
+
+        <!-- Licensing Options -->
+        <section class="py-16 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Community Edition</h2>
+                        <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4">Free</div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Perfect for personal use, education, and open source projects
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Full BlissOS functionality
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Community support
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Open source license
+                            </li>
+                        </ul>
+                        <a href="/" class="block w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            Download Now
+                        </a>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg border-2 border-indigo-500">
+                        <div class="text-center mb-4">
+                            <span class="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Coming Soon</span>
                         </div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">
-                            <%= license.communityEdition.license %>
-                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Commercial License</h2>
+                        <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">Contact Us</div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            For commercial use, enterprise deployment, and professional support
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Commercial use rights
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Priority support
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Custom solutions
+                            </li>
+                        </ul>
+                        <a href="mailto:social@blissos.org?subject=Commercial%20License%20Inquiry" class="block w-full bg-indigo-600 text-white text-center py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                            Contact Sales
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="max-w-6xl mx-auto px-4 py-16">
-            <!-- Community Edition Features -->
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                    What's Included in Community Edition
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-fallback">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Features & Capabilities</h3>
-                        <ul class="space-y-3">
-                            <% license.communityEdition.features.forEach(feature => { %>
-                                <li class="flex items-start">
-                                    <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300"><%= feature %></span>
-                                </li>
-                            <% }); %>
-                        </ul>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Perfect For</h3>
-                        <ul class="space-y-3">
-                            <% license.communityEdition.idealFor.forEach(use => { %>
-                                <li class="flex items-start">
-                                    <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300"><%= use %></span>
-                                </li>
-                            <% }); %>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- License Comparison -->
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                    Community vs Commercial Edition
-                </h2>
-                <%- include('partials/license-comparison', { license: license }) %>
-            </section>
-
-            <!-- Migration Path -->
-            <section class="mb-16">
-                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                        <%= license.migrationPath.title %>
-                    </h2>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        <%= license.migrationPath.description %>
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-fallback">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Migration Steps</h3>
-                            <ol class="space-y-2">
-                                <% license.migrationPath.steps.forEach((step, index) => { %>
-                                    <li class="flex items-start">
-                                        <span class="inline-flex items-center justify-center w-6 h-6 bg-purple-600 text-white text-sm font-medium rounded-full mr-3 flex-shrink-0">
-                                            <%= index + 1 %>
-                                        </span>
-                                        <span class="text-gray-700 dark:text-gray-300"><%= step %></span>
-                                    </li>
-                                <% }); %>
-                            </ol>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Migration Benefits</h3>
-                            <ul class="space-y-2">
-                                <% license.migrationPath.benefits.forEach(benefit => { %>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        <span class="text-gray-700 dark:text-gray-300"><%= benefit %></span>
-                                    </li>
-                                <% }); %>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="mb-16">
+        <!-- FAQ Section -->
+        <section class="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                     Frequently Asked Questions
                 </h2>
                 <div class="space-y-6">
-                    <% license.faq.forEach((item, index) => { %>
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <button class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                                    onclick="toggleFAQ(<%= index %>)">
-                                <div class="flex justify-between items-center">
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                        <%= item.question %>
-                                    </h3>
-                                    <svg id="faq-icon-<%= index %>" class="w-5 h-5 text-gray-500 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div id="faq-content-<%= index %>" class="hidden px-6 pb-4">
-                                <p class="text-gray-600 dark:text-gray-300">
-                                    <%= item.answer %>
-                                </p>
-                            </div>
-                        </div>
-                    <% }); %>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section class="text-center">
-                <div class="bg-blue-50 dark:bg-gray-800 rounded-lg p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                        Have More Questions?
-                    </h2>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        Our community and commercial teams are here to help you choose the right solution.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://discord.gg/blissos" target="_blank"
-                           class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
-                            <i class="fab fa-discord mr-2"></i>
-                            Community Support
-                        </a>
-                        <a href="mailto:social@blissos.org?subject=Licensing%20Inquiry" 
-                           class="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700 transition-colors">
-                            <i class="fas fa-envelope mr-2"></i>
-                            Contact Us
-                        </a>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            What license does BlissOS use?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            BlissOS is based on the Android Open Source Project (AOSP) and follows the Apache 2.0 license for most components, with some GPL components as well.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            Can I use BlissOS commercially?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Yes, the open source nature of BlissOS allows commercial use. However, for enterprise deployments and commercial support, we recommend contacting us for a commercial license.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            Do I need to pay for BlissOS?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            No, BlissOS is completely free for personal use, education, and most commercial applications. Commercial licenses are available for enterprises requiring additional support and services.
+                        </p>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-16 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    Have Questions About Licensing?
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    Our team is here to help you understand which license option is right for your use case.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://discord.gg/blissos" target="_blank"
+                       class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                        <i class="fab fa-discord mr-2"></i>
+                        Join Community
+                    </a>
+                    <a href="mailto:social@blissos.org?subject=Licensing%20Question" 
+                       class="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <%- include('partials/footer') %>
-
-    <script>
-        function toggleFAQ(index) {
-            const content = document.getElementById('faq-content-' + index);
-            const icon = document.getElementById('faq-icon-' + index);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-    </script>
 </body>
-
 </html>
