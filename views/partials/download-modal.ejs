@@ -1,0 +1,85 @@
+<!-- Download Details Modal -->
+<div id="download-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-900 dark:text-white"></h3>
+                <button onclick="closeDownloadModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showDownloadDetails(buildId) {
+        const builds = <%- JSON.stringify(downloads && downloads.builds ? downloads.builds : []) %>;
+        const build = builds.find(b => b.id === buildId);
+        
+        if (build) {
+            document.getElementById('modal-title').textContent = build.title;
+            document.getElementById('modal-content').innerHTML = `
+                <div class="space-y-4">
+                    <p class="text-gray-600 dark:text-gray-300">${build.description}</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Version:</strong> ${build.version}</div>
+                        <div><strong>Size:</strong> ${build.size}</div>
+                        <div><strong>Released:</strong> ${new Date(build.releaseDate).toLocaleDateString()}</div>
+                        <div><strong>Category:</strong> ${build.category}</div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">All Features:</h4>
+                        <ul class="space-y-1">
+                            ${build.features.map(feature => `
+                                <li class="flex items-center text-sm">
+                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    ${feature}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">System Requirements:</h4>
+                        <div class="text-sm space-y-1">
+                            <div><strong>RAM:</strong> ${build.requirements ? build.requirements.ram : 'N/A'}</div>
+                            <div><strong>Storage:</strong> ${build.requirements ? build.requirements.storage : 'N/A'}</div>
+                            <div><strong>Architecture:</strong> ${build.requirements ? build.requirements.architecture : 'N/A'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 pt-4">
+                        <a href="${build.downloadUrl}" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                            Download ${build.title}
+                        </a>
+                        <div class="flex space-x-4 items-center text-sm">
+                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Changelog</a>
+                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">SHA256</a>
+                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">GPG</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('download-modal').classList.remove('hidden');
+        }
+    }
+    
+    function closeDownloadModal() {
+        document.getElementById('download-modal').classList.add('hidden');
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('download-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDownloadModal();
+        }
+    });
+</script>
